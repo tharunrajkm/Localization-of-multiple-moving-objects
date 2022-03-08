@@ -1,0 +1,12 @@
+<launch>
+
+<include file="$(find robot_localization)/launch/Task3/stereo_usb_cam_third.launch" />
+
+<include file="$(find robot_localization)/launch/Task3/ar_track_usb_cam3.launch" />
+
+<node name="map_to_usb_cam_3" pkg="tf" type="static_transform_publisher"  args="0 0 0 0 0 0 1 map usb_cam 10"/>
+
+<node name="multiple_pose_marker_3" pkg="robot_localization" type="multiple_pose_marker_3.py" respawn="false" output="screen">
+        </node>
+
+</launch>

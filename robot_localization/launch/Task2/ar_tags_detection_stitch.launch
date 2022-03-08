@@ -1,0 +1,20 @@
+<launch>
+
+<include file="$(find robot_localization)/launch/Task2/stereo_usb_cam_stitch.launch" />
+
+<node name="real_time_stitching" pkg="robot_localization" type="realtime_stitching_thread.py"  respawn="false" output="screen"> 
+    </node>
+
+<node name="stitched_image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/Stitched_image"/>
+    <param name="autosize" value="true" />
+</node>
+
+<include file="$(find robot_localization)/launch/Task2/ar_track_stitched.launch" />
+
+<node name="map_to_stero_cam" pkg="tf" type="static_transform_publisher"  args="0 0 0 0 0 0 1 map usb_cam 10"/>
+
+<node name="multiple_pose_marker_1" pkg="robot_localization" type="multiple_pose_marker_1.py" respawn="false" output="screen">
+</node>
+
+</launch>

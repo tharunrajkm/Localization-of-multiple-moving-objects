@@ -1,0 +1,7 @@
+<launch>
+
+<include file="$(find robot_localization)/launch/Task2/ar_tags_detection_stitch.launch" />
+    <node name="object_tracking_KF_1" pkg="robot_localization" type="object_tracking_KF_1.py" respawn="false" output="screen">
+        </node>
+
+</launch>

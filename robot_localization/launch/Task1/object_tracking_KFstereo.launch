@@ -1,0 +1,9 @@
+<launch>
+
+<include file="$(find robot_localization)/launch/Task1/ar_tags_detection.launch" />
+    <node name="object_tracking_KF_1" pkg="robot_localization" type="object_tracking_KF_1.py" respawn="false" output="screen">
+        </node>
+    <node name="object_tracking_KF_2" pkg="robot_localization" type="object_tracking_KF_2.py" respawn="false" output="screen">
+        </node>
+
+</launch>
